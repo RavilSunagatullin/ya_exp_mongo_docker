@@ -1,4 +1,4 @@
-name: Node.js CI
+name: Code Style Check
 
 on:
   push:
@@ -9,12 +9,12 @@ on:
       - main
 
 jobs:
-  build:
-
+  lint:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
       - name: Use Node.js 14.x
         uses: actions/setup-node@v2
@@ -24,5 +24,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run tests
-        run: npm test
+      - name: Format code with Prettier
+        run: npm run format
+
+      - name: Run ESLint
+        run: npm run lint
