@@ -3,7 +3,7 @@ import pluginPrettier from 'eslint-plugin-prettier'
 export default {
   languageOptions: {
     parserOptions: {
-      ecmaVersion: 2021,
+      ecmaVersion: 2020,
       sourceType: 'module',
     },
   },
