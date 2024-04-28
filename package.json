@@ -10,7 +10,9 @@
   "eslintConfig": {
     "overrides": [
       {
-        "files": ["*.mjs"],
+        "files": [
+          "*.mjs"
+        ],
         "extends": "./eslint.config.mjs"
       }
     ]
