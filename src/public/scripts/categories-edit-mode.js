@@ -10,11 +10,11 @@ const useCategoryState = () => {
   function setCurrentCategoryState(key, value) {
     currentCategoryState[key] = value
   }
-  
+
   function setCategoriesEditModeOn(state) {
     categoriesEditModeOn = state
   }
-  
+
   return { setCurrentCategoryState, setCategoriesEditModeOn }
 }
 
@@ -120,7 +120,7 @@ const setCloseButtonStyleAndListeners = (categoryId, state) => {
 export const changeCategoryEditMode = (categoryId, state) => {
   const { setCategoriesEditModeOn } = useCategoryState()
   const targetElementsState = useEditableCategoryElementsState(categoryId)
-  
+
   if (state) {
     changeTargetElementsStyle(targetElementsState, state)
     blurElements(categoryId, true)

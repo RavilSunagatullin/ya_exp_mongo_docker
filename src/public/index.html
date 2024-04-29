@@ -1,183 +1,180 @@
 <!doctype html>
-<html lang='ru'>
-<head>
-  <meta charset='UTF-8' />
-  <meta content='width=device-width, initial-scale=1.0' name='viewport' />
-  <title>Admin</title>
-  <link href='./styles/styles.css' rel='stylesheet' />
-</head>
-<body>
-<section>
-  <h2 class='section-title'>
-        <span>Игры</span
-        >
-    <button class='button instance-button add-game-button call-dialog-button'>Добавить игру</button>
-  </h2>
-  <ul class='games-list'></ul>
-</section>
-<section>
-  <h2 class='section-title'>
-        <span>Категории</span
-        >
-    <button class='button instance-button add-category-button call-dialog-button'>Добавить категорию</button>
-  </h2>
-  <ul class='categories-list'></ul>
-</section>
-<section>
-  <h2 class='section-title'>
-        <span>Пользователи</span
-        >
-    <button class='button instance-button add-user-button call-dialog-button'>Добавить пользователя</button>
-  </h2>
-  <ul class='users-list'></ul>
-</section>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Admin</title>
+    <link href="./styles/styles.css" rel="stylesheet" />
+  </head>
+  <body>
+    <section>
+      <h2 class="section-title">
+        <span>Игры</span>
+        <button class="button instance-button add-game-button call-dialog-button">Добавить игру</button>
+      </h2>
+      <ul class="games-list"></ul>
+    </section>
+    <section>
+      <h2 class="section-title">
+        <span>Категории</span>
+        <button class="button instance-button add-category-button call-dialog-button">Добавить категорию</button>
+      </h2>
+      <ul class="categories-list"></ul>
+    </section>
+    <section>
+      <h2 class="section-title">
+        <span>Пользователи</span>
+        <button class="button instance-button add-user-button call-dialog-button">Добавить пользователя</button>
+      </h2>
+      <ul class="users-list"></ul>
+    </section>
 
-<dialog class='form-dialog' id='form-dialog'>
-  <button class='close-dialog-button'>Закрыть</button>
-  <div class='form-container'></div>
-</dialog>
+    <dialog class="form-dialog" id="form-dialog">
+      <button class="close-dialog-button">Закрыть</button>
+      <div class="form-container"></div>
+    </dialog>
 
-<dialog class='tooltip'></dialog>
+    <dialog class="tooltip"></dialog>
 
-<template id='game-list-item'>
-  <li class='game-list-item'>
-    <article class='game-card'>
-      <button class='button instance-button close-item'>Закрыть</button>
-      <div>
-        <img alt='' src='' />
-        <div class='game-controls'>
-          <input class='textfield image-url-input' placeholder='Ссылка на изображение' type='url' />
-          <button class='button instance-button edit-game-button'>Редактировать игру</button>
-          <button class='button instance-button delete-game-button'>Удалить игру</button>
+    <template id="game-list-item">
+      <li class="game-list-item">
+        <article class="game-card">
+          <button class="button instance-button close-item">Закрыть</button>
+          <div>
+            <img alt="" src="" />
+            <div class="game-controls">
+              <input class="textfield image-url-input" placeholder="Ссылка на изображение" type="url" />
+              <button class="button instance-button edit-game-button">Редактировать игру</button>
+              <button class="button instance-button delete-game-button">Удалить игру</button>
+            </div>
+          </div>
+
+          <div class="description">
+            <h3></h3>
+            <p class="bold-text">Описание:</p>
+            <p class="text"></p>
+            <p class="bold-text">Разработчик:</p>
+            <p class="developer"></p>
+            <p class="link">
+              <span class="bold-text">Ссылка:</span>
+              <a href="" target="_blank"></a>
+            </p>
+            <p class="category bold-text">Категории:</p>
+            <ul class="categories"></ul>
+            <p class="users bold-text">Проголосовали:</p>
+            <ul class="votes"></ul>
+          </div>
+        </article>
+      </li>
+    </template>
+
+    <template id="category-list-item">
+      <li class="category-list-item">
+        <button class="close-item button instance-button">Закрыть</button>
+        <div>
+          <p class="name"></p>
+          <button class="button icon-button edit-category-button">
+            <span class="visually-hidden">Редактировать</span>
+            <svg>
+              <use href="./svg/icons.svg#edit"></use>
+            </svg>
+          </button>
+          <button class="button icon-button delete-category-button">
+            <span class="visually-hidden">Удалить</span>
+            <svg>
+              <use href="./svg/icons.svg#delete"></use>
+            </svg>
+          </button>
         </div>
-      </div>
-      
-      <div class='description'>
-        <h3></h3>
-        <p class='bold-text'>Описание:</p>
-        <p class='text'></p>
-        <p class='bold-text'>Разработчик:</p>
-        <p class='developer'></p>
-        <p class='link'>
-          <span class='bold-text'>Ссылка:</span>
-          <a href='' target='_blank'></a>
-        </p>
-        <p class='category bold-text'>Категории:</p>
-        <ul class='categories'></ul>
-        <p class='users bold-text'>Проголосовали:</p>
-        <ul class='votes'></ul>
-      </div>
-    </article>
-  </li>
-</template>
+      </li>
+    </template>
 
-<template id='category-list-item'>
-  <li class='category-list-item'>
-    <button class='close-item button instance-button'>Закрыть</button>
-    <div>
-      <p class='name'></p>
-      <button class='button icon-button edit-category-button'>
-        <span class='visually-hidden'>Редактировать</span>
-        <svg>
-          <use href='./svg/icons.svg#edit'></use>
-        </svg>
-      </button>
-      <button class='button icon-button delete-category-button'>
-        <span class='visually-hidden'>Удалить</span>
-        <svg>
-          <use href='./svg/icons.svg#delete'></use>
-        </svg>
-      </button>
-    </div>
-  </li>
-</template>
+    <template id="user-list-item">
+      <li class="user-list-item">
+        <button class="close-item button instance-button">Закрыть</button>
+        <div>
+          <p class="name"></p>
+          <p class="email"></p>
+          <button class="button icon-button edit-user-button">
+            <span class="visually-hidden">Редактировать</span>
+            <svg>
+              <use href="./svg/icons.svg#edit"></use>
+            </svg>
+          </button>
+          <button class="button icon-button delete-user-button">
+            <span class="visually-hidden">Удалить</span>
+            <svg>
+              <use href="./svg/icons.svg#delete"></use>
+            </svg>
+          </button>
+        </div>
+      </li>
+    </template>
 
-<template id='user-list-item'>
-  <li class='user-list-item'>
-    <button class='close-item button instance-button'>Закрыть</button>
-    <div>
-      <p class='name'></p>
-      <p class='email'></p>
-      <button class='button icon-button edit-user-button'>
-        <span class='visually-hidden'>Редактировать</span>
-        <svg>
-          <use href='./svg/icons.svg#edit'></use>
-        </svg>
-      </button>
-      <button class='button icon-button delete-user-button'>
-        <span class='visually-hidden'>Удалить</span>
-        <svg>
-          <use href='./svg/icons.svg#delete'></use>
-        </svg>
-      </button>
-    </div>
-  </li>
-</template>
+    <template id="categories-checkbox">
+      <label>
+        <input name="game-category" type="checkbox" value="" />
+        <span></span>
+      </label>
+    </template>
 
-<template id='categories-checkbox'>
-  <label>
-    <input name='game-category' type='checkbox' value='' />
-    <span></span>
-  </label>
-</template>
+    <!-- Темплейты форм -->
 
-<!-- Темплейты форм -->
-
-<template class='add-game-form'>
-  <form class='form form--game'>
-    <label class='form-label'>
-      <span class='form-label-text'>Название игры</span>
-      <input class='textfield' name='title' type='text' />
-    </label>
-    <label class='form-label'>
-      <span class='form-label-text'>Описание игры</span>
-      <textarea class='textarea' cols='30' name='description' rows='10'></textarea>
-    </label>
-    <label class='form-label'>
-      <span class='form-label-text'>Разработчик</span>
-      <input class='textfield' name='developer' type='text' />
-    </label>
-    <label class='form-label'>
-      <span class='form-label-text'>Ссылка на обложку</span>
-      <input class='textfield' name='image' type='url' />
-    </label>
-    <label class='form-label'>
-      <span class='form-label-text'>Ссылка на игру</span>
-      <input class='textfield' name='link' type='url' />
-    </label>
-    <div class='categories-fields'>
-      <h3>Категории</h3>
-    </div>
-    <button class='button instance-button' type='submit'>Добавить игру</button>
-  </form>
-</template>
-<template class='add-category-form'>
-  <form class='form form--category'>
-    <label class='form-label'>
-      <span class='form-label'>Название категории</span>
-      <input class='textfield' name='name' type='text' />
-    </label>
-    <button class='button instance-button' type='submit'>Добавить категорию</button>
-  </form>
-</template>
-<template class='add-user-form'>
-  <form class='form form--user'>
-    <label class='form-label'>
-      <span class='form-label'>Имя пользователя</span>
-      <input class='textfield' name='username' type='text' />
-    </label>
-    <label class='form-label'>
-      <span class='form-label'>Email</span>
-      <input class='textfield' name='email' type='email' />
-    </label>
-    <label class='form-label'>
-      <span class='form-label'>Пароль</span>
-      <input class='textfield' name='password' type='password' />
-    </label>
-    <button class='button instance-button' type='submit'>Добавить пользователя</button>
-  </form>
-</template>
-<script src='./scripts/script.js' type='module'></script>
-<script src='./scripts/dialogs-controller.js' type='module'></script>
-</body>
+    <template class="add-game-form">
+      <form class="form form--game">
+        <label class="form-label">
+          <span class="form-label-text">Название игры</span>
+          <input class="textfield" name="title" type="text" />
+        </label>
+        <label class="form-label">
+          <span class="form-label-text">Описание игры</span>
+          <textarea class="textarea" cols="30" name="description" rows="10"></textarea>
+        </label>
+        <label class="form-label">
+          <span class="form-label-text">Разработчик</span>
+          <input class="textfield" name="developer" type="text" />
+        </label>
+        <label class="form-label">
+          <span class="form-label-text">Ссылка на обложку</span>
+          <input class="textfield" name="image" type="url" />
+        </label>
+        <label class="form-label">
+          <span class="form-label-text">Ссылка на игру</span>
+          <input class="textfield" name="link" type="url" />
+        </label>
+        <div class="categories-fields">
+          <h3>Категории</h3>
+        </div>
+        <button class="button instance-button" type="submit">Добавить игру</button>
+      </form>
+    </template>
+    <template class="add-category-form">
+      <form class="form form--category">
+        <label class="form-label">
+          <span class="form-label">Название категории</span>
+          <input class="textfield" name="name" type="text" />
+        </label>
+        <button class="button instance-button" type="submit">Добавить категорию</button>
+      </form>
+    </template>
+    <template class="add-user-form">
+      <form class="form form--user">
+        <label class="form-label">
+          <span class="form-label">Имя пользователя</span>
+          <input class="textfield" name="username" type="text" />
+        </label>
+        <label class="form-label">
+          <span class="form-label">Email</span>
+          <input class="textfield" name="email" type="email" />
+        </label>
+        <label class="form-label">
+          <span class="form-label">Пароль</span>
+          <input class="textfield" name="password" type="password" />
+        </label>
+        <button class="button instance-button" type="submit">Добавить пользователя</button>
+      </form>
+    </template>
+    <script src="./scripts/script.js" type="module"></script>
+    <script src="./scripts/dialogs-controller.js" type="module"></script>
+  </body>
 </html>

@@ -5,14 +5,14 @@ Backend для Yandex Practicum
 ## Структура проекта
 
 - `src/` - папка с исходным кодом приложения
-	- `database/` - папка с файлами для подключения к базе данных
-	- `config/` - папка с конфигом приложения
-	- `controllers/` - папка с контроллерами
-	- `middlewares/` - папка с миделварами
-	- `models/` - папка с моделями для базы данных
-	- `routes/` - папка с роутами приложения
-	- `utils/` - папка с общими утилитами
-	- `__tests__/` - папка с тестами
+  - `database/` - папка с файлами для подключения к базе данных
+  - `config/` - папка с конфигом приложения
+  - `controllers/` - папка с контроллерами
+  - `middlewares/` - папка с миделварами
+  - `models/` - папка с моделями для базы данных
+  - `routes/` - папка с роутами приложения
+  - `utils/` - папка с общими утилитами
+  - `__tests__/` - папка с тестами
 - `index.js` - основной файл приложения
 - `Dockerfile` и `docker-compose.yml` настройка Docker
 - `jest.config.js` настройка тестирования
@@ -24,7 +24,7 @@ Backend для Yandex Practicum
 1. Установите [Docker](https://docs.docker.com/get-docker/)
    и [Docker Compose](https://docs.docker.com/compose/install/), если у вас их еще нет.
 2. Склонируйте репозиторий:
-   
+
    ```bash
    git clone https://github.com/RavilSunagatullin/ya_exp_mongo_docker.git
    cd ya_exp_mongo_docker

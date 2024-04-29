@@ -24,11 +24,11 @@ export const useGameState = () => {
   function setCurrentState(key, value) {
     currentState[key] = value
   }
-  
+
   function setGamesEditModeOn(state) {
     gamesEditModeOn = state
   }
-  
+
   return { setCurrentState, setGamesEditModeOn }
 }
 
@@ -90,31 +90,31 @@ const useEditableElementsState = (gameId) => {
       canSetSource: false,
     },
   ]
-  
+
   function setTransparency(state) {
     targetElementsState.forEach((item) => {
       item.canSetTransparency && (item.element.style.opacity = state ? '.5' : '1')
     })
     return targetElementsState
   }
-  
+
   function setCanEditText(state) {
     targetElementsState.forEach((item) => {
       item.canEditText && item.element.setAttribute('contenteditable', state)
     })
     return targetElementsState
   }
-  
+
   function setVisibility(state) {
     targetElementsState.forEach((item) => {
       item.canSetVisibility &&
-      item.element.forEach((element) => {
-        element.style.display = state ? 'block' : 'none'
-      })
+        item.element.forEach((element) => {
+          element.style.display = state ? 'block' : 'none'
+        })
     })
     return targetElementsState
   }
-  
+
   return {
     targetElementsState,
     setTransparency,
@@ -130,7 +130,7 @@ export const fillStoreWithPageData = (gameId) => {
   const allCategories = [...document.querySelectorAll(`#game-${gameId} .categories li`)]
   const categoriesIdArray = allCategories.map((category) => category.dataset.id)
   setCurrentState('categories', categoriesIdArray)
-  
+
   targetElementsState.forEach((item) => {
     if (item.canEditText) {
       setCurrentState(item.name, item.element.textContent)
@@ -138,7 +138,7 @@ export const fillStoreWithPageData = (gameId) => {
     if (item.canSetSource) {
       setCurrentState(item.name, item.element.src || item.element.href)
     }
-    
+
     // показывает новые элементы
     if (item.canSetVisibility) {
       item.element.forEach((element) => {
@@ -237,7 +237,7 @@ const setCloseButtonStyleAndListeners = (gameId, state) => {
 export function changeGameEditMode(gameId, state) {
   const { setGamesEditModeOn } = useGameState()
   let { setTransparency, setCanEditText, setVisibility } = useEditableElementsState(gameId)
-  
+
   if (state) {
     setButtonStyle(gameId, state)
     blurElements(gameId, state)
@@ -260,11 +260,11 @@ export function changeGameEditMode(gameId, state) {
     showVotesBlock(gameId)
     setCloseButtonStyleAndListeners(gameId, false)
   }
-  
+
   return { currentState, gamesEditModeOn }
 }
 
-const turnOnEditModeHandler = function(e) {
+const turnOnEditModeHandler = function (e) {
   let gameId = e.target.dataset.id
   fillStoreWithPageData(gameId)
   changeGameEditMode(gameId, true)
