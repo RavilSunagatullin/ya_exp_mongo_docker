@@ -31,7 +31,7 @@ Backend для Yandex Practicum
    docker-compose up --build
    ```
 
-# Подключение к mongoDb compass
+## Подключение к mongoDb compass
 
 1. Установите [MongoDb compass](https://www.mongodb.com/products/tools/compass)
 2. URL для подключения mongodb://localhost:27017
