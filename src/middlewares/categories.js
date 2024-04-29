@@ -13,7 +13,6 @@ const createCategory = async (req, res, next) => {
   }
 }
 const findCategoryById = async (req, res, next) => {
-  console.log('GET /categories/:id')
   try {
     req.category = await categories.findById(req.params.id)
     next()
