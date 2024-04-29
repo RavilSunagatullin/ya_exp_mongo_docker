@@ -37,4 +37,29 @@ const deleteUser = async (req, res, next) => {
     res.status(400).send({ message: 'Error deleting user' })
   }
 }
-module.exports = { findAllUsers, createUser, findUserById, updateUser, deleteUser }
+const checkEmptyNameAndEmail = async (req, res, next) => {
+  if (!req.body.username || !req.body.email) {
+    res.status(400).send({ message: 'Введите имя и email' })
+  } else {
+    next()
+  }
+}
+const checkIsUserExists = async (req, res, next) => {
+  const isInArray = req.usersArray.find((user) => {
+    return req.body.email === user.email
+  })
+  if (isInArray) {
+    res.status(400).send({ message: 'Пользователь с таким email уже существует' })
+  } else {
+    next()
+  }
+}
+module.exports = {
+  findAllUsers,
+  createUser,
+  findUserById,
+  updateUser,
+  deleteUser,
+  checkEmptyNameAndEmail,
+  checkIsUserExists,
+}

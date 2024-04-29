@@ -41,4 +41,51 @@ const deleteGame = async (req, res, next) => {
     res.status(400).send({ message: 'Error deleting game' })
   }
 }
-module.exports = { findAllGames, createGame, findGameById, updateGame, deleteGame }
+const checkEmptyFields = async (req, res, next) => {
+  if (!req.body.title || !req.body.description || !req.body.image || !req.body.link || !req.body.developer) {
+    res.status(400).send({ message: 'Fill all inputs' })
+  } else {
+    next()
+  }
+}
+const checkIfCategoriesAvailable = async (req, res, next) => {
+  if (!req.body.categories || req.body.categories.length === 0) {
+    res.headers = { 'Content-Type': 'application/json' }
+    res.status(400).send({ message: 'Pick 1 category' })
+  } else {
+    next()
+  }
+}
+const checkIfUsersAreSafe = async (req, res, next) => {
+  if (!req.body.users) {
+    next()
+    return
+  }
+  if (req.body.users.length - 1 === req.game.users.length) {
+    next()
+  } else {
+    res.status(400).send('You cannot delete users or add more than one user')
+  }
+}
+const checkIsGameExists = async (req, res, next) => {
+  const isInArray = req.gamesArray.find((game) => {
+    return req.body.title === game.title
+  })
+  if (isInArray) {
+    res.status(400).send({ message: 'Игра с таким названием уже существует' })
+  } else {
+    next()
+  }
+}
+
+module.exports = {
+  findAllGames,
+  createGame,
+  findGameById,
+  updateGame,
+  deleteGame,
+  checkEmptyFields,
+  checkIfCategoriesAvailable,
+  checkIfUsersAreSafe,
+  checkIsGameExists,
+}
