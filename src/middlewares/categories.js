@@ -29,4 +29,12 @@ const updateCategory = async (req, res, next) => {
     res.status(400).send({ message: 'Error update category' })
   }
 }
-module.exports = { findAllCategories, createCategory, findCategoryById, updateCategory }
+const deleteCategories = async (req, res, next) => {
+  try {
+    req.category = await categories.findByIdAndDelete(req.params.id)
+    next()
+  } catch (error) {
+    res.status(400).send({ message: 'Error deleting category' })
+  }
+}
+module.exports = { findAllCategories, createCategory, findCategoryById, updateCategory, deleteCategories }
