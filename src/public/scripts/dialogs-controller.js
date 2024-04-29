@@ -1,5 +1,6 @@
-import { appendGameForm, appendCategoryForm, appendUserForm } from './forms.js'
-import { removeCategoryFormListeners, removeUserFormListeners, removeGameFormListeners } from './requests.js'
+import { appendCategoryForm, appendGameForm, appendUserForm } from './forms.js'
+import { removeCategoryFormListeners, removeGameFormListeners, removeUserFormListeners } from './requests.js'
+
 const buttons = [...document.querySelectorAll('.call-dialog-button')]
 const dialog = document.querySelector('.form-dialog')
 const closeButton = dialog.querySelector('.close-dialog-button')

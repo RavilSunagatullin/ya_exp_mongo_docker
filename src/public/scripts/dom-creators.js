@@ -33,7 +33,7 @@ const generateGamesList = (gamesArray, template, parent) => {
     } else {
       clone.querySelector('.users').style.display = 'none'
     }
-
+    
     clone.querySelector('img').src = element.image
     clone.querySelector('a').href = element.link
     clone.querySelector('a').textContent = element.link

@@ -1,25 +1,25 @@
-import { postData, putData, deleteData } from './api-interactors.js'
+import { deleteData, postData, putData } from './api-interactors.js'
 import {
-  currentState,
-  changeGameEditMode,
-  addGamesEditModeListeners,
-  fillStoreWithEditableElements,
-} from './games-edit-mode.js'
-import {
+  addCategoriesEditModeListeners,
   changeCategoryEditMode,
   currentCategoryState,
-  addCategoriesEditModeListeners,
   fillCategoriesStateFromForm,
 } from './categories-edit-mode.js'
+import { closeDialog } from './dialogs-controller.js'
+import { showTooltip } from './dom-creators.js'
 import {
-  userCurrentState,
+  addGamesEditModeListeners,
+  changeGameEditMode,
+  currentState,
+  fillStoreWithEditableElements,
+} from './games-edit-mode.js'
+import { reload } from './script.js'
+import {
+  addUsersEditModeListeners,
   changeUserEditMode,
   fillUsersStateFromForm,
-  addUsersEditModeListeners,
+  userCurrentState,
 } from './users-edit-mode.js'
-import { reload } from './script.js'
-import { closeDialog } from './dialogs-controller.js'
-import { showTooltip, hideTooltip } from './dom-creators.js'
 
 const prepareFormData = (form) => {
   const data = new FormData(form)

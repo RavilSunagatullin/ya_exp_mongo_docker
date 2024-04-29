@@ -1,5 +1,6 @@
 import pluginJs from '@eslint/js'
 import pluginPrettier from 'eslint-plugin-prettier'
+
 export default {
   languageOptions: {
     parserOptions: {
