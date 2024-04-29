@@ -17,11 +17,12 @@ Backend для Yandex Practicum
 - `Dockerfile` и `docker-compose.yml` настройка Docker
 - `jest.config.js` настройка тестирования
 - `eslint.config.mjs`и `.prettierrc` настройка линтера и форматирования
-- `.github` настройка CI  в github actions
+- `.github` настройка CI в github actions
 
 ## Установка
 
-1. Установите [Docker](https://docs.docker.com/get-docker/) и [Docker Compose](https://docs.docker.com/compose/install/), если у вас их еще нет.
+1. Установите [Docker](https://docs.docker.com/get-docker/)
+   и [Docker Compose](https://docs.docker.com/compose/install/), если у вас их еще нет.
 2. Склонируйте репозиторий:
 
    ```bash

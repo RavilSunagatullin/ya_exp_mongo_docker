@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const config = require('../config/index')
+
 function connectToDatabase() {
   mongoose
     .connect(config.mongo.url, config.mongo.options)
@@ -9,6 +10,7 @@ function connectToDatabase() {
       setTimeout(connectToDatabase, 5000)
     })
 }
+
 connectToDatabase()
 
 module.exports = mongoose
