@@ -4,6 +4,9 @@ const mongoose = require('./src/database/index')
 const bodyParser = require('body-parser')
 const path = require('path')
 const mainRouter = require('./src/routes/main')
+const gamesRouter = require('./src/routes/games')
+const categoriesRouter = require('./src/routes/categories')
+const usersRouter = require('./src/routes/users')
 const app = express()
 
 app.use((err, req, res, next) => {
@@ -14,7 +17,7 @@ app.use((err, req, res, next) => {
 app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname, 'src', 'public')))
 
-app.use(mainRouter)
+app.use(mainRouter, gamesRouter, categoriesRouter, usersRouter)
 app.listen(config.app.port, () => {
   console.log(`Server is running on port ${config.app.port}`)
 })
